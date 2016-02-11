@@ -1,0 +1,41 @@
+body {
+	font-size: 11px;
+}
+
+.selector {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.selector .type {
+    width: 5em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.selector .value {
+    min-width: 5em;
+	color: #880000;
+}
+
+.selectors li.odd-row {
+    position: relative;
+    background-color: #F5F5F5;
+}
+
+.selectors {
+    padding-left: 0;
+}
+
+.selectors li {
+    display: flex;
+    align-items: baseline;
+}
+
+*:focus {
+    outline: none;
+}
+
+.code-highlight {
+	overflow: auto;
+}
