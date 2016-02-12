@@ -2,7 +2,7 @@
 UI Automation Chrome Extension helps in writing Selenium tests for your website by providing selectors and code samples.
 
 ## Installation
-Download the [latest version](https://github.com/zalando/ui-automation-chrome-extension/releases/tag/0.1.0).
+Download the [latest version](https://github.com/zalando/ui-automation-chrome-extension/releases/tag/0.1.1).
 
 Unzip and upload the extension from [chrome://extensions](chrome://extensions)
 
