@@ -3,5 +3,10 @@
     "description": "UI Automation helps you to write automated UI tests.",
     "version": "0.1.0",
     "devtools_page": "code/html/devtools.html",
-    "manifest_version": 2
+    "manifest_version": 2,
+	"icons":
+			{
+				"48": "icons/icon48.png",
+				"128": "icons/icon128.png"
+			}
 }
