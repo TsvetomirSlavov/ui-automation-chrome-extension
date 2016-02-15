@@ -45,7 +45,7 @@ function CSSGenerator(element) {
 				name: element.getAttribute('name'),
 				siblingsOfSameTypeCount: getSiblingsOfSameTypeCount(element),
 				originalElement: element
-			}
+			};
 		
 			keyInfoOfElements.unshift(keyInfoOfElement);
 
@@ -102,9 +102,9 @@ function CSSGenerator(element) {
 		}
 	
 		if (targetElement.cssClasses) {
-			return handleCssClassSelector(keyInfoOfElements, targetElement)
+			return handleCssClassSelector(keyInfoOfElements, targetElement);
 		} else {
-			return handleNthOfTypeSelector(keyInfoOfElements, targetElement)
+			return handleNthOfTypeSelector(keyInfoOfElements, targetElement);
 		}
 	}
 

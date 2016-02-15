@@ -56,11 +56,10 @@ uiAutomationApp.directive('highlight', function($timeout) {
 			scope.$watch('expression', 
 				function (newValue, oldValue) {
 					if(newValue !== oldValue && newValue) {
-						var highlightedCode = hljs.highlight('java', newValue).value;
-						element[0].innerHTML = highlightedCode;
+						element[0].innerHTML = hljs.highlight('java', newValue).value;
 					}
 				}
 			);
 		}
-	}
+	};
 });
