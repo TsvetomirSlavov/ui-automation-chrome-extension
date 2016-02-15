@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html data-ng-app="uiAutomationApp" ng-csp="">
+<html data-ng-app="uiAutomationApp">
     <head>
         <link href="../css/main.css" rel="stylesheet">
 		<link href="../css/highlightjs.css" rel="stylesheet">
     </head>
     <body data-ng-controller="UIAutomationController">
-        
+
 		<ol class="selectors" tabindex="0">
 		    <li class="odd-row">
 		        <div class="selector">
@@ -21,17 +21,18 @@
 		        </div>
 		    </li>
 		</ol>
-		
+
 		<h4>XPath and Java</h4>
 		<pre class="code-highlight" select-on-click highlight expression="javaXPathExpression"></pre>
-		
+
 		<h4>CSS and Java</h4>
 		<pre class="code-highlight" select-on-click highlight expression="javaCssExpression"></pre>
-		
+
         <script src="../js/lib/angular.min.js"></script>
 		<script src="../js/lib/highlight.pack.js"></script>
         <script src="../js/tools/XPathGenerator.js"></script>
 		<script src="../js/tools/CSSGenerator.js"></script>
+        <script src="../js/tools/JavaGenerator.js"></script>
         <script src="../js/panel.js"></script>
 
     </body>
