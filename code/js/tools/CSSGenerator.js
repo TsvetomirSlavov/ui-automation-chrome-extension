@@ -39,7 +39,7 @@ function CSSGenerator(element) {
 		function populateElements(element) {
 			var keyInfoOfElement = {
 				id: element.id,
-				cssClasses: element.getAttribute('class') ? element.getAttribute('class').split(' ') : undefined,
+				cssClasses: element.getAttribute('class') ? element.getAttribute('class').match(/\S+/g) : undefined,
 				nthOfType: getNthOfTypeIndex(element),
 				tagName: element.tagName.toLowerCase(),
 				name: element.getAttribute('name'),
