@@ -1,6 +1,6 @@
 {
   "name": "UI Automation",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "UI Automation helps you to write automated UI tests.",
   "devDependencies": {
     "gulp-jshint": "^2.0.0",
