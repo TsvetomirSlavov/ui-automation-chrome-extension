@@ -40,18 +40,16 @@ function CSSGenerator(domElement) {
         }
     }
 
+    function getNthOfTypeSuffix(element) {
+        return element.nthOfType === 1 && element.siblingsOfSameTypeCount === 0 ? '' : ':nth-of-type(' + element.nthOfType + ')';
+    }
+
     function getNthOfTypeInputTagSelector(element) {
-        var nthOfTypeSuffix = element.nthOfType === 1 && element.siblingsOfSameTypeCount === 0
-            ? ''
-            : ':nth-of-type(' + element.nthOfType + ')';
-        return 'input[name=\'' + element.name + '\']' + nthOfTypeSuffix;
+        return 'input[name=\'' + element.name + '\']' + getNthOfTypeSuffix(element);
     }
 
     function getNthOfTypeTagSelector(element) {
-        var nthOfTypeSuffix = element.nthOfType === 1 && element.siblingsOfSameTypeCount === 0
-            ? ''
-            : ':nth-of-type(' + element.nthOfType + ')';
-        return element.lowerCasedTagName + nthOfTypeSuffix;
+        return element.lowerCasedTagName + getNthOfTypeSuffix(element);
     }
 
     function handleNthOfTypeSelector(elements, element) {

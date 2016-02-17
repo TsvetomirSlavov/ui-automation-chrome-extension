@@ -1,6 +1,9 @@
-var uiAutomationApp = angular.module('uiAutomationApp', []);
+var uiAutomationApp = angular.module('uiAutomationApp', [
+    'directives.highlight',
+    'directives.selectOnClick'
+]);
 
-uiAutomationApp.controller('UIAutomationController', function ($scope, $window) {
+uiAutomationApp.controller('UIAutomationController', function ($scope) {
 
     $scope.xPathExpression = '';
     $scope.cssExpression = '';
@@ -32,34 +35,4 @@ uiAutomationApp.controller('UIAutomationController', function ($scope, $window) 
             $scope.$apply();
         });
     }
-});
-
-uiAutomationApp.directive('selectOnClick', function () {
-    return function (scope, element, attrs) {
-
-        element.bind('click', function () {
-            var range = document.createRange();
-            range.selectNodeContents(element[0]);
-            var sel = window.getSelection();
-            sel.removeAllRanges();
-            sel.addRange(range);
-        });
-    };
-});
-
-uiAutomationApp.directive('highlight', function ($timeout) {
-    return {
-        scope: {
-            expression: '='
-        },
-        link: function (scope, element, attrs) {
-            scope.$watch('expression',
-                function (newValue, oldValue) {
-                    if (newValue !== oldValue && newValue) {
-                        element[0].innerHTML = hljs.highlight('java', newValue).value;
-                    }
-                }
-            );
-        }
-    };
 });
