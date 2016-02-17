@@ -1,6 +1,7 @@
 describe('CSSGenerator', function () {
 
     describe('DOM with IDs', function () {
+        var targetElement;
 
         it("finds element with id", function () {
             targetElement = createDocWithTargetElementThatHasId('<div id="target-element"></div>');
@@ -38,9 +39,10 @@ describe('CSSGenerator', function () {
     });
 
     describe('DOM with inputs', function () {
+        var targetElement;
 
         it("finds element with input that has unique name", function () {
-            targetElement = createDocWithTargetElement('<input id="target-element" name="input-name" />');
+            targetElement = createDocWithTargetElement('<input name="second-input-name" /><input id="target-element" name="input-name" />');
             expect(CSSGenerator(targetElement)).toEqual('html > body > input[name=\'input-name\']');
         });
 
@@ -51,6 +53,7 @@ describe('CSSGenerator', function () {
     });
 
     describe('DOM with siblings of same type', function () {
+        var targetElement;
 
         it("finds element that has siblings of same type", function () {
             targetElement = createDocWithTargetElement('<div id="target-element"></div><div></div><div></div>');
@@ -59,6 +62,7 @@ describe('CSSGenerator', function () {
     });
 
     describe('DOM with no siblings', function () {
+        var targetElement;
 
         it("finds element that has no siblings", function () {
             targetElement = createDocWithTargetElement('<div id="target-element"></div>');
