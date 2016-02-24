@@ -1,4 +1,4 @@
-function CSSGenerator(domElement) {
+function CSSGenerator(domElement, doc) {
 
     function getNthOfTypeIndex(domElement) {
         if (domElement.parentNode) {
@@ -30,13 +30,26 @@ function CSSGenerator(domElement) {
         return '#' + element.id;
     }
 
+    function getDocument() {
+        if (doc) {
+            return doc;
+        }
+        return document;
+    }
+
     function handleElementWithName(elements, element) {
-        var inputSelector = element.lowerCasedTagName + '[name=\'' + element.name + '\']';
-        var siblingsAlsoMatchInputSelector = element.parentNode.querySelectorAll(inputSelector).length > 1;
+        var nameSelector = element.lowerCasedTagName + '[name=\'' + element.name + '\']';
+
+        var hitsCount = getDocument().querySelectorAll(nameSelector).length;
+        if (hitsCount === 1) {
+            return nameSelector;
+        }
+
+        var siblingsAlsoMatchInputSelector = element.parentNode.querySelectorAll(nameSelector).length > 1;
         if (siblingsAlsoMatchInputSelector) {
             return generatePath(elements) + ' > ' + getNthOfTypeTagSelectorWithName(element);
         } else {
-            return generatePath(elements) + ' > ' + inputSelector;
+            return generatePath(elements) + ' > ' + nameSelector;
         }
     }
 
@@ -66,7 +79,7 @@ function CSSGenerator(domElement) {
 
     function handleCssClassSelector(elements, element) {
         var selectorByClasses = '.' + element.cssClasses.join('.');
-        var hitsCount = document.querySelectorAll(selectorByClasses).length;
+        var hitsCount = getDocument().querySelectorAll(selectorByClasses).length;
         if (hitsCount === 1) {
             return selectorByClasses;
         } else {
