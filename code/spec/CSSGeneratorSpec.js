@@ -38,18 +38,29 @@ describe('CSSGenerator', function () {
         });
     });
 
-    describe('DOM with inputs', function () {
+    describe('DOM with name attribute', function () {
         var targetElement;
 
-        it("finds element with input that has unique name", function () {
+        it("finds input element that has unique name", function () {
             targetElement = createDocWithTargetElement('<input name="second-input-name" /><input id="target-element" name="input-name" />');
             expect(CSSGenerator(targetElement)).toEqual('html > body > input[name=\'input-name\']');
         });
 
-        it("finds element with input that has nonunique name", function () {
+        it("finds input element that has nonunique name", function () {
             targetElement = createDocWithTargetElement('<input name="input-name" /><input id="target-element" name="input-name" />');
             expect(CSSGenerator(targetElement)).toEqual('html > body > input[name=\'input-name\']:nth-of-type(2)');
         });
+
+        it("finds button element that has unique name", function () {
+            targetElement = createDocWithTargetElement('<button id="target-element" name="button-name">Button</button>');
+            expect(CSSGenerator(targetElement)).toEqual('html > body > button[name=\'button-name\']');
+        });
+
+        it("finds button element that has nonunique name", function () {
+            targetElement = createDocWithTargetElement('<button name="button-name">Button 1</button><button id="target-element" name="button-name">Button 2</button>');
+            expect(CSSGenerator(targetElement)).toEqual('html > body > button[name=\'button-name\']:nth-of-type(2)');
+        });
+
     });
 
     describe('DOM with siblings of same type', function () {
