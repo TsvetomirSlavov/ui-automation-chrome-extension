@@ -30,11 +30,11 @@ function CSSGenerator(domElement) {
         return '#' + element.id;
     }
 
-    function handleInputWithName(elements, element) {
-        var inputSelector = 'input[name=\'' + element.name + '\']';
+    function handleElementWithName(elements, element) {
+        var inputSelector = element.lowerCasedTagName + '[name=\'' + element.name + '\']';
         var siblingsAlsoMatchInputSelector = element.parentNode.querySelectorAll(inputSelector).length > 1;
         if (siblingsAlsoMatchInputSelector) {
-            return generatePath(elements) + ' > ' + getNthOfTypeInputTagSelector(element);
+            return generatePath(elements) + ' > ' + getNthOfTypeTagSelectorWithName(element);
         } else {
             return generatePath(elements) + ' > ' + inputSelector;
         }
@@ -44,8 +44,8 @@ function CSSGenerator(domElement) {
         return element.nthOfType === 1 && element.siblingsOfSameTypeCount === 0 ? '' : ':nth-of-type(' + element.nthOfType + ')';
     }
 
-    function getNthOfTypeInputTagSelector(element) {
-        return 'input[name=\'' + element.name + '\']' + getNthOfTypeSuffix(element);
+    function getNthOfTypeTagSelectorWithName(element) {
+        return element.lowerCasedTagName + '[name=\'' + element.name + '\']' + getNthOfTypeSuffix(element);
     }
 
     function getNthOfTypeTagSelector(element) {
@@ -53,10 +53,8 @@ function CSSGenerator(domElement) {
     }
 
     function handleNthOfTypeSelector(elements, element) {
-        var lowerCasedTagName = element.lowerCasedTagName;
-
-        if (lowerCasedTagName === 'input' && element.name) {
-            return handleInputWithName(elements, element);
+        if (element.name) {
+            return handleElementWithName(elements, element);
         }
 
         if (elements.length === 0) {
