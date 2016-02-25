@@ -66,10 +66,6 @@ function CSSGenerator(domElement, doc) {
     }
 
     function handleNthOfTypeSelector(elements, element) {
-        if (element.name) {
-            return handleElementWithName(elements, element);
-        }
-
         if (elements.length === 0) {
             return getNthOfTypeTagSelector(element);
         } else {
@@ -99,7 +95,9 @@ function CSSGenerator(domElement, doc) {
             return handleIdSelector(targetElement);
         }
 
-        if (targetElement.cssClasses) {
+        if (targetElement.name) {
+            return handleElementWithName(elements, targetElement);
+        } else if (targetElement.cssClasses) {
             return handleCssClassSelector(elements, targetElement);
         } else {
             return handleNthOfTypeSelector(elements, targetElement);
