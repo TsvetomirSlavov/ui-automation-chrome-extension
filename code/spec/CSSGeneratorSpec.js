@@ -61,6 +61,10 @@ describe('CSSGenerator', function () {
             expect(CSSGenerator(createdDom.targetElement, createdDom.doc)).toEqual('html > body > button[name=\'button-name\']:nth-of-type(2)');
         });
 
+        it("uses name attribute instead of CSS class", function () {
+            createdDom = createDocWithTargetElement('<button id="target-element" name="button-name" class="button-class">Button 1</button>');
+            expect(CSSGenerator(createdDom.targetElement, createdDom.doc)).toEqual('button[name=\'button-name\']');
+        });
     });
 
     describe('DOM with siblings of same type', function () {
