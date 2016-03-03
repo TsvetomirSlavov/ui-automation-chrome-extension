@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/zalando/ui-automation-chrome-extension.svg?branch=master)](https://travis-ci.org/zalando/ui-automation-chrome-extension)
+
 # UI Automation Chrome Extension
 When it comes to writing end-to-end tests, developers lose a lot of time writing boilerplate code. UI Automation Chrome Extension aims to address this problem by speeding up the process of writing automated Selenium tests. It provides simple DOM selectors with Java code snippets so that developers can reduce repetitive boilerplate-writing and focus on test logic instead.
 
