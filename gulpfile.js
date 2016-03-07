@@ -2,8 +2,8 @@ const gulp = require('gulp');
 const jshint = require('gulp-jshint');
 const jasmineBrowser = require('gulp-jasmine-browser');
 
-gulp.task('lint', function () {
-    return gulp.src(['./code/js/*.js', './code/js/tools/*.js'])
+gulp.task('lint', function() {
+    return gulp.src(['./code/js/*.js', './code/js/**/*.js', '!./code/js/lib/*'])
         .pipe(jshint())
         .pipe(jshint.reporter('default'));
 });

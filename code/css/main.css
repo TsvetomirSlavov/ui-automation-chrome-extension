@@ -38,4 +38,10 @@ body {
 
 .code-highlight {
 	overflow: auto;
+    word-wrap: initial;
+}
+
+.no-text-styles {
+    text-decoration: none;
+    color: #1a0dab;
 }

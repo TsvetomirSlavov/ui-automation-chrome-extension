@@ -1,0 +1,22 @@
+<div>
+    <span ng-show="!trackingClicks" ng-click="startPopulatingPageObject()"><button>Start building page object!</button></span>
+    <span ng-show="trackingClicks">Recording clicks... <button ng-click="stopPopulatingPageObject()">Stop recording</button></span>
+    <a class="no-text-styles" ng-click="clearFields()" ng-show="fields.length > 0" href="">Clear fields</a>
+    <div hljs hljs-source="sourceCode" class="code-highlight"></div>
+
+<div style="display: none" id="java-original-code">
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class PageObject {
+    <field ng-repeat="field in fields track by $index">
+    {{ field }}
+    </field>
+    public PageObject(WebDriver webDriver) {
+        PageFactory.initElements(webDriver, this);
+    }
+}
+</div>
+</div>

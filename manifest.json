@@ -7,5 +7,24 @@
   "icons": {
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
-  }
+  },
+  "background": {
+    "scripts": [
+      "code/js/background_script/background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "code/js/lib/jquery.js",
+        "code/js/content_script/pageObjectBuilder.js",
+        "code/js/tools/CSSGenerator.js",
+        "code/js/tools/XPathGenerator.js",
+        "code/js/tools/JavaGenerator.js"
+      ]
+    }
+  ]
 }
