@@ -1,11 +1,10 @@
 var JavaGenerator = {
 
-    fromXPath: function(xPathExpression) {
-        return 'private final WebElement element = getDriver().findElement(By.xpath("' + xPathExpression + '"));';
-    },
-    fromCSS: function(cssExpression) {
+    fieldFromCSS: function (cssExpression, existingFieldsLength) {
         var onlyIdSelector = cssExpression.indexOf('#') === 0 && cssExpression.indexOf(' ') === -1;
-        var bySelector = onlyIdSelector ? 'By.id("' + cssExpression + '")' : 'By.cssSelector("' + cssExpression + '")';
-        return 'private final WebElement element = getDriver().findElement(' + bySelector + ');';
+        var annotation = onlyIdSelector ? '@FindBy(id = "' + cssExpression.substring(1) + '")' : '@FindBy(css = "' + cssExpression + '")';
+        var field = 'private WebElement element' + (existingFieldsLength + 1) + ';';
+
+        return annotation + '\n    ' + field;
     }
 };

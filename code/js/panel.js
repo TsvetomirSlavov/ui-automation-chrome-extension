@@ -1,6 +1,9 @@
 var uiAutomationApp = angular.module('uiAutomationApp', [
+    'directives.javaPageObject',
     'directives.highlight',
-    'directives.selectOnClick'
+    'directives.selectOnClick',
+
+    'hljs'
 ]);
 
 uiAutomationApp.controller('UIAutomationController', function ($scope) {
@@ -14,25 +17,25 @@ uiAutomationApp.controller('UIAutomationController', function ($scope) {
         updateCssAndXpathExpressions();
     });
 
-    function getJavaXPathExpression(xPathExpression) {
-        return JavaGenerator.fromXPath(xPathExpression);
-    }
-
-    function getJavaCssExpression(cssExpression) {
-        return JavaGenerator.fromCSS(cssExpression);
-    }
-
     function updateCssAndXpathExpressions() {
         chrome.devtools.inspectedWindow.eval('(' + XPathGenerator.toString() + ')($0)', function (res) {
             $scope.xPathExpression = res;
-            $scope.javaXPathExpression = getJavaXPathExpression(res);
             $scope.$apply();
         });
 
         chrome.devtools.inspectedWindow.eval('(' + CSSGenerator.toString() + ')($0)', function (res) {
             $scope.cssExpression = res;
-            $scope.javaCssExpression = getJavaCssExpression(res);
             $scope.$apply();
         });
     }
+
+    $scope.elementClicked = function (element) {
+        $scope.$broadcast('elementClicked', element);
+        $scope.$apply();
+    };
+
 });
+
+function elementClicked(element) {
+    angular.element(document.getElementById('ui-automation-app')).scope().elementClicked(element);
+}

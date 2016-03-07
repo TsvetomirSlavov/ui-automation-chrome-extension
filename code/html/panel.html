@@ -5,7 +5,7 @@
         <link href="../css/main.css" rel="stylesheet">
 		<link href="../css/highlightjs.css" rel="stylesheet">
     </head>
-    <body data-ng-controller="UIAutomationController">
+    <body data-ng-controller="UIAutomationController" id="ui-automation-app">
 
 		<ol class="selectors" tabindex="0">
 		    <li class="odd-row">
@@ -22,18 +22,17 @@
 		    </li>
 		</ol>
 
-		<h4>XPath and Java</h4>
-		<pre class="code-highlight" select-on-click highlight expression="javaXPathExpression"></pre>
-
-		<h4>CSS and Java</h4>
-		<pre class="code-highlight" select-on-click highlight expression="javaCssExpression"></pre>
+		<java-page-object></java-page-object>
 
         <script src="../js/lib/angular.min.js"></script>
 		<script src="../js/lib/highlight.pack.js"></script>
+		<script src="../js/lib/angular-highlight.js"></script>
+		<script src="../js/lib/jquery.js"></script>
         <script src="../js/tools/XPathGenerator.js"></script>
 		<script src="../js/tools/CSSGenerator.js"></script>
         <script src="../js/tools/JavaGenerator.js"></script>
         <script src="../js/directive/highlight.directive.js"></script>
+		<script src="../js/directive/javaPageObject.directive.js"></script>
         <script src="../js/directive/selectOnClick.directive.js"></script>
         <script src="../js/panel.js"></script>
 
