@@ -1,4 +1,4 @@
-angular.module('directives.javaPageObject', [])
+angular.module('directives.javaPageObject', ['ngclipboard'])
     .directive('javaPageObject', function () {
         return {
             restrict: 'E',
@@ -59,6 +59,21 @@ angular.module('directives.javaPageObject', [])
                 function notifyContentScriptToStopTrackingClicks() {
                     toContentScriptChannel.postMessage({action: "stop"});
                 }
+
+                function showTooltip(elem, msg) {
+                    elem.setAttribute('class', 'tooltipped tooltipped-s');
+                    elem.setAttribute('aria-label', msg);
+                }
+
+                $scope.onSuccess = function(e) {
+                    showTooltip(e.trigger, 'Copied!');
+                    e.clearSelection();
+                };
+
+                $scope.mouseLeave = function(event) {
+                    event.target.removeAttribute('class');
+                    event.target.removeAttribute('aria-label');
+                };
             }
         };
     });
