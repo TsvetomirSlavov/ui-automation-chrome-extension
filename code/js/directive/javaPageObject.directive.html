@@ -1,6 +1,8 @@
 <div>
     <span ng-show="!trackingClicks" ng-click="startPopulatingPageObject()"><button>Start building page object!</button></span>
     <span ng-show="trackingClicks">Recording clicks... <button ng-click="stopPopulatingPageObject()">Stop recording</button></span>
+    <button ng-show="fields.length > 0" ngclipboard data-clipboard-target=".hljs.java" ngclipboard-success="onSuccess(e);" ng-mouseleave="mouseLeave($event)">Copy to clipboard</button>
+
     <a class="no-text-styles" ng-click="clearFields()" ng-show="fields.length > 0" href="">Clear fields</a>
     <div hljs hljs-source="sourceCode" class="code-highlight"></div>
 

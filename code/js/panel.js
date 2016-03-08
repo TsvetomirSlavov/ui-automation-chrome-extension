@@ -3,7 +3,8 @@ var uiAutomationApp = angular.module('uiAutomationApp', [
     'directives.highlight',
     'directives.selectOnClick',
 
-    'hljs'
+    'hljs',
+    'ngclipboard'
 ]);
 
 uiAutomationApp.controller('UIAutomationController', function ($scope) {
