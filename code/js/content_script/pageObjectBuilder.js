@@ -1,5 +1,5 @@
 var port = chrome.runtime.connect({name: 'contentscript'});
-var populatingPageObject = true;
+var populatingPageObject = false;
 
 $('body').on('click', function (event) {
     if (populatingPageObject) {
@@ -15,7 +15,6 @@ $('body').on('click', function (event) {
     }
 });
 
-chrome.runtime.onMessage.addListener(
-    function (request) {
-        populatingPageObject = request.action === 'start';
-    });
+chrome.runtime.onMessage.addListener(function (request) {
+    populatingPageObject = request.action === 'start';
+});
