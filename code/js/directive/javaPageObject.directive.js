@@ -10,7 +10,6 @@ angular.module('directives.javaPageObject', ['ngclipboard'])
                 $scope.sourceCode = '';
                 $scope.trackingClicks = false;
                 var toContentScriptChannel = chrome.runtime.connect({name: 'tocontentscriptchannel'});
-                toContentScriptChannel.postMessage({action: "stop"});
 
                 $scope.clearFields = function () {
                     $scope.fields = [];
