@@ -75,12 +75,13 @@ function CSSGenerator(domElement, doc) {
 
     function handleCssClassSelector(elements, element) {
         var selectorByClasses = '.' + element.cssClasses.join('.');
+        var classCount = element.cssClasses.length;
         var hitsCount = getDocument().querySelectorAll(selectorByClasses).length;
-        if (hitsCount === 1) {
+        if (hitsCount === 1 && classCount < 3) {
             return selectorByClasses;
         } else {
             var siblingsAlsoMatchCssSelector = element.parentNode.querySelectorAll(selectorByClasses).length > 1;
-            if (siblingsAlsoMatchCssSelector) {
+            if (siblingsAlsoMatchCssSelector || classCount > 1) {
                 return handleNthOfTypeSelector(elements, element);
             } else {
                 return generatePath(elements) + ' > ' + selectorByClasses;

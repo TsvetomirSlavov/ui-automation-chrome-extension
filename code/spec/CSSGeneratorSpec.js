@@ -36,6 +36,11 @@ describe('CSSGenerator', function () {
             createdDom = createDocWithTargetElement('<div id="target-element" class=" element-class "></div>');
             expect(CSSGenerator(createdDom.targetElement, createdDom.doc)).toEqual('.element-class');
         });
+
+        it("does not use class selector with more than two classes", function () {
+            createdDom = createDocWithTargetElement('<div><div id="target-element" class="element-class-1 element-class-2 element-class-3"></div></div>');
+            expect(CSSGenerator(createdDom.targetElement, createdDom.doc)).toEqual('html > body > div > div');
+        });
     });
 
     describe('DOM with name attribute', function () {
