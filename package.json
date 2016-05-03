@@ -1,6 +1,6 @@
 {
   "name": "ui-automation",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "UI Automation helps you to write automated UI tests.",
   "devDependencies": {
     "gulp": "3.9.1",
