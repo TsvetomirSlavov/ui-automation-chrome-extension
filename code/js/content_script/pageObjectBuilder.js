@@ -16,6 +16,6 @@ $('body').on('click', function (event) {
     }
 });
 
-chrome.runtime.onMessage.addListener(function (request) {
+port.onMessage.addListener(function (request) {
     populatingPageObject = request.action === 'start';
 });
